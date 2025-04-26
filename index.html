@@ -1,71 +1,266 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Недвижимость в Куала-Лумпуре</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Недвижимость в Малайзии</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Подключение иконок FontAwesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
-    body { margin: 0; font-family: 'Poppins', sans-serif; background-color: #0F172A; color: #F1F5F9; }
-    header { background: url('https://github.com/Mixavr/Key_Malaysia/blob/main/339a880a-d2ea-4749-9d7a-8e4ac30474f3.png?raw=true') center/cover no-repeat; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-    header h1 { color: #1E293B; font-size: 2.5rem; margin-bottom: 1rem; }
-    header p { color: #1E293B; font-size: 1.2rem; margin-bottom: 2rem; }
-    header a { background: #22C55E; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: bold; }
-    section { padding: 4rem 2rem; }
-    .categories { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
-    .card { background: #F1F5F9; color: #0F172A; border-radius: 12px; overflow: hidden; width: 300px; }
-    .card img { width: 100%; height: 200px; object-fit: cover; }
-    .card h3 { margin: 1rem; }
-    .card p { margin: 0 1rem 1rem; }
-    .card a { display: block; margin: 1rem; background: #0284C7; color: white; text-align: center; padding: 0.5rem; border-radius: 8px; text-decoration: none; }
-    .advantages ul { list-style: none; padding: 0; }
-    .advantages li { margin-bottom: 1rem; padding-left: 1.5rem; position: relative; }
-    .advantages li::before { content: '✓'; position: absolute; left: 0; color: #22C55E; }
-    footer { background: #0C1222; text-align: center; padding: 2rem 1rem; font-size: 0.9rem; color: #94A3B8; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #F8FAF5;
+      color: #1E293B;
+    }
+
+    header {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      color: white;
+      background-color: #000;
+    }
+
+    #bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0);
+      z-index: 0;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      color: #ffffff;
+    }
+
+    .header-content h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      max-width: 800px;
+      margin: 0 auto;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .header-content p {
+      font-size: 1.3rem;
+      margin: 20px 0;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .header-content a.main-button {
+      background-color: #22C55E;
+      color: white;
+      padding: 14px 28px;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: background 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+      margin-top: 25px;
+    }
+
+    .header-content a.main-button:hover {
+      background-color: #16A34A;
+      transform: scale(1.05);
+    }
+
+    /* Секция с иконками */
+    .social-icons {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .icon-button {
+      color: #1E293B;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    }
+
+    .icon-button.avito svg{
+      border-radius: 10px;
+    }
+
+    .icon-button:hover {
+      transform: scale(1.15);
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    section:nth-child(even) {
+      background-color: #D1FAE5;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #166534;
+    }
+
+    section p {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    footer {
+      background-color: #F8FAF5;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.9rem;
+      color: #94A3B8;
+    }
+
+    /* Мобильная адаптация */
+    @media (max-width: 768px) {
+      .header-content h1 {
+        font-size: 2rem;
+      }
+      .header-content p {
+        font-size: 1rem;
+      }
+      .header-content a.main-button {
+        padding: 10px 20px;
+        font-size: 1rem;
+      }
+      section h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 0 10px;
+      }
+      .header-content h1 {
+        font-size: 1.6rem;
+      }
+      .header-content p {
+        font-size: 0.95rem;
+      }
+      section {
+        padding: 40px 10px;
+      }
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Инвестируйте в недвижимость в сердце Азии — Куала-Лумпур, Малайзия</h1>
-  <p>Апартаменты, бунгало и земельные участки для жизни и инвестиций</p>
-  <a href="https://t.me/bestpropertyinmalaysia" target="_blank">Связаться в Telegram</a>
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="video_2025-04-26_14-33-02.mp4" type="video/mp4" />
+    Ваш браузер не поддерживает видео-фон.
+  </video>
+  <div class="overlay"></div>
+  <div class="header-content">
+    <h1>Инвестируйте в недвижимость в сердце Азии — Куала-Лумпур, Малайзия</h1>
+    <p>Апартаменты, участки с бунгало, квартиры с высоким потенциалом доходности</p>
+    <a href="https://t.me/bestpropertyinmalaysia" target="_blank" class="main-button">Связаться</a>
+
+    <div class="social-icons">
+      <a href="https://wa.me/60169028207" target="_blank" aria-label="WhatsApp" class="icon-button">
+        <svg xmlns="http://www.w3.org/2000/svg"
+          aria-label="WhatsApp" role="img"
+          viewBox="0 0 512 512"><rect
+          width="512" height="512"
+          rx="15%"
+          fill="#25d366"/>
+          <path fill="#25d366" stroke="#ffffff" stroke-width="26" d="M123 393l14-65a138 138 0 1150 47z"/><path fill="#ffffff" d="M308 273c-3-2-6-3-9 1l-12 16c-3 2-5 3-9 1-15-8-36-17-54-47-1-4 1-6 3-8l9-14c2-2 1-4 0-6l-12-29c-3-8-6-7-9-7h-8c-2 0-6 1-10 5-22 22-13 53 3 73 3 4 23 40 66 59 32 14 39 12 48 10 11-1 22-10 27-19 1-3 6-16 2-18"/>
+        </svg>
+      </a>
+      <a href="https://instagram.com/malaysia_property_dreams" target="_blank" aria-label="Instagram" class="icon-button">     
+        <svg width="800px" height="800px" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#paint0_radial_87_7153)"/>
+          <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#paint1_radial_87_7153)"/>
+          <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#paint2_radial_87_7153)"/>
+          <path d="M23 10.5C23 11.3284 22.3284 12 21.5 12C20.6716 12 20 11.3284 20 10.5C20 9.67157 20.6716 9 21.5 9C22.3284 9 23 9.67157 23 10.5Z" fill="white"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M16 21C18.7614 21 21 18.7614 21 16C21 13.2386 18.7614 11 16 11C13.2386 11 11 13.2386 11 16C11 18.7614 13.2386 21 16 21ZM16 19C17.6569 19 19 17.6569 19 16C19 14.3431 17.6569 13 16 13C14.3431 13 13 14.3431 13 16C13 17.6569 14.3431 19 16 19Z" fill="white"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M6 15.6C6 12.2397 6 10.5595 6.65396 9.27606C7.2292 8.14708 8.14708 7.2292 9.27606 6.65396C10.5595 6 12.2397 6 15.6 6H16.4C19.7603 6 21.4405 6 22.7239 6.65396C23.8529 7.2292 24.7708 8.14708 25.346 9.27606C26 10.5595 26 12.2397 26 15.6V16.4C26 19.7603 26 21.4405 25.346 22.7239C24.7708 23.8529 23.8529 24.7708 22.7239 25.346C21.4405 26 19.7603 26 16.4 26H15.6C12.2397 26 10.5595 26 9.27606 25.346C8.14708 24.7708 7.2292 23.8529 6.65396 22.7239C6 21.4405 6 19.7603 6 16.4V15.6ZM15.6 8H16.4C18.1132 8 19.2777 8.00156 20.1779 8.0751C21.0548 8.14674 21.5032 8.27659 21.816 8.43597C22.5686 8.81947 23.1805 9.43139 23.564 10.184C23.7234 10.4968 23.8533 10.9452 23.9249 11.8221C23.9984 12.7223 24 13.8868 24 15.6V16.4C24 18.1132 23.9984 19.2777 23.9249 20.1779C23.8533 21.0548 23.7234 21.5032 23.564 21.816C23.1805 22.5686 22.5686 23.1805 21.816 23.564C21.5032 23.7234 21.0548 23.8533 20.1779 23.9249C19.2777 23.9984 18.1132 24 16.4 24H15.6C13.8868 24 12.7223 23.9984 11.8221 23.9249C10.9452 23.8533 10.4968 23.7234 10.184 23.564C9.43139 23.1805 8.81947 22.5686 8.43597 21.816C8.27659 21.5032 8.14674 21.0548 8.0751 20.1779C8.00156 19.2777 8 18.1132 8 16.4V15.6C8 13.8868 8.00156 12.7223 8.0751 11.8221C8.14674 10.9452 8.27659 10.4968 8.43597 10.184C8.81947 9.43139 9.43139 8.81947 10.184 8.43597C10.4968 8.27659 10.9452 8.14674 11.8221 8.0751C12.7223 8.00156 13.8868 8 15.6 8Z" fill="white"/>
+          <defs>
+          <radialGradient id="paint0_radial_87_7153" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12 23) rotate(-55.3758) scale(25.5196)">
+          <stop stop-color="#B13589"/>
+          <stop offset="0.79309" stop-color="#C62F94"/>
+          <stop offset="1" stop-color="#8A3AC8"/>
+          </radialGradient>
+          <radialGradient id="paint1_radial_87_7153" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(11 31) rotate(-65.1363) scale(22.5942)">
+          <stop stop-color="#E0E8B7"/>
+          <stop offset="0.444662" stop-color="#FB8A2E"/>
+          <stop offset="0.71474" stop-color="#E2425C"/>
+          <stop offset="1" stop-color="#E2425C" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="paint2_radial_87_7153" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0.500002 3) rotate(-8.1301) scale(38.8909 8.31836)">
+          <stop offset="0.156701" stop-color="#406ADC"/>
+          <stop offset="0.467799" stop-color="#6A45BE"/>
+          <stop offset="1" stop-color="#6A45BE" stop-opacity="0"/>
+          </radialGradient>
+          </defs>
+          </svg>
+      </a>
+      <a href="https://www.avito.ru/user/323ef223ce71e5441f540c7f7f5b2550/profile/all/nedvizhimost_za_rubezhom?id=7328271554&src=item&page_from=from_item_card&iid=7328271554&sellerId=323ef223ce71e5441f540c7f7f5b2550" target="_blank" aria-label="Avito" class="icon-button avito">
+        <svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd">
+          <path fill="#FFF" d="M0 0h90v90H0z"/><circle fill="#97CF26" cx="59" cy="59" r="16"/><circle fill="#0AF" cx="29" cy="29" r="13"/><circle fill="#FF6163" cx="59" cy="29" r="10"/><circle fill="#A169F7" cx="28.5" cy="58.5" r="7.5"/></g>
+        </svg>
+      </a>
+    </div>
+
+  </div>
 </header>
 
-<section class="categories">
-  <div class="card">
-    <img src="https://github.com/Mixavr/Key_Malaysia/blob/main/DSC_0784_large.jpeg?raw=true" alt="Апартаменты">
-    <h3>Апартаменты</h3>
-    <p>Квартиры в современных жилых комплексах.</p>
-    <a href="#">Смотреть объекты</a>
-  </div>
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Бунгало">
-    <h3>Земельные участки с бунгало</h3>
-    <p>Участки с домами в тропических локациях у моря.</p>
-    <a href="#">Смотреть объекты</a>
-  </div>
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Участки">
-    <h3>Земельные участки</h3>
-    <p>Участки без построек, на побережье или в городе.</p>
-    <a href="#">Смотреть объекты</a>
-  </div>
+<section>
+  <h2>Почему именно Малайзия?</h2>
+  <p>Стабильная экономика, высокий уровень жизни, перспективное образование для детей. Все плюсы под кнопкой 
+    <a href="https://t.me/bestpropertyinmalaysia" target="_blank" style="color: #22C55E; text-decoration: underline;">"СВЯЗАТЬСЯ"</a>.
+  </p>
 </section>
 
-<section class="advantages">
-  <h2>Преимущества инвестиций в Малайзию</h2>
-  <ul>
-    <li>Ваш дом в стране вечного лета</li>
-    <li>Надежные инвестиции без потрясений</li>
-    <li>Для тех, кто хочет перестать читать новостные ленты</li>
-    <li>Развитая инфраструктура и безопасная среда</li>
-    <li>Высокий уровень жизни и международные школы</li>
-  </ul>
+<section>
+  <h2>Объекты на любой вкус</h2>
+  <p>Мы предлагаем тщательно отобранные объекты: от городских апартаментов до эксклюзивных вилл на зелёных холмах.</p>
+</section>
+
+<section>
+  <h2>Гарантированное сопровождение</h2>
+  <p>Мы помогаем на всех этапах: подбор с полным обзором, проверка документов, сделка.</p>
 </section>
 
 <footer>
-  <p>&copy; 2025 Недвижимость в Малайзии. Все права защищены.</p>
+  © 2025 Недвижимость в Куала-Лумпуре. Все права защищены.
 </footer>
 
 </body>
